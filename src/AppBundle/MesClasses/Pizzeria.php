@@ -24,10 +24,24 @@ class Pizzeria
     }
 
     public function recupererPizzas(){
-        $request = new \GuzzleHttp\Psr7\Request('GET', 'http://pizzapi.herokuapp.com/pizzas');
+        /*$request = new \GuzzleHttp\Psr7\Request('GET', 'http://pizzapi.herokuapp.com/pizzas');
         $promise = $this->client->sendAsync($request)->then(function ($response) {
-            echo 'I completed! ' . $response->getBody();
+            echo 'Pizzas :  ' . $response->getBody();
         });
-        $promise->wait();
+        $promise->wait();*/
+
+        $res = $this->client->request('GET', 'http://pizzapi.herokuapp.com/pizzas',[]);
+        echo $res->getBody();
+    }
+
+    public function commanderPizza(){
+
+        $res = $this->client->request('POST', 'http://pizzapi.herokuapp.com/orders',
+            [
+                'json' => ['id' => 1]
+            ]
+        );
+
+        echo $res->getBody();die;
     }
 }
