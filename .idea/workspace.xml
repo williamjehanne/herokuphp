@@ -27,7 +27,11 @@
       <file leaf-file-name="composer.json" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/composer.json">
           <provider selected="true" editor-type-id="text-editor">
+<<<<<<< HEAD
             <state vertical-scroll-proportion="0.03930131">
+=======
+            <state vertical-scroll-proportion="0.37335286" vertical-offset="15" max-vertical-offset="930">
+>>>>>>> 04394c7d1702da5d1214bd7d1f2db3d07be8fc75
               <caret line="18" column="54" selection-start-line="18" selection-start-column="54" selection-end-line="18" selection-end-column="54" />
               <folding />
             </state>
@@ -196,6 +200,7 @@
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/composer.json">
       <provider selected="true" editor-type-id="text-editor">
+<<<<<<< HEAD
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding />
@@ -205,6 +210,9 @@
     <entry file="file://$PROJECT_DIR$/composer.json">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.03930131">
+=======
+        <state vertical-scroll-proportion="0.37335286" vertical-offset="15" max-vertical-offset="930">
+>>>>>>> 04394c7d1702da5d1214bd7d1f2db3d07be8fc75
           <caret line="18" column="54" selection-start-line="18" selection-start-column="54" selection-end-line="18" selection-end-column="54" />
           <folding />
         </state>
