@@ -38,6 +38,11 @@ class Pizzeria
         }
     }
 
+    public function recupererPizzasREDIS(){
+        $redis = $this->get('snc_redis.default');
+        $ensemble_pizzas = $redis->get('ensemble_pizzas');
+    }
+
     public function commanderPizza(){
 
         try {

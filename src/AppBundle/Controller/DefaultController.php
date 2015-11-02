@@ -17,11 +17,11 @@ class DefaultController extends Controller
     {
         $redis = $this->get('snc_redis.default');
         $pizzeria = new Pizzeria();
-        $ensemble_pizzas = $pizzeria->recupererPizzas();
+        $ensemble_pizzas = $pizzeria->recupererPizzasREDIS();
 
         //print_r($ensemble_pizzas);
 
-
+        $redis->get('ensemble_pizzas');
 
         foreach($ensemble_pizzas as $pizza){
             //print_r($pizza);
