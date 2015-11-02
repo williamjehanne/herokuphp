@@ -10,6 +10,7 @@
 namespace AppBundle\MesClasses;
 
 use GuzzleHttp;
+use Symfony\Component\Config\Definition\Exception\Exception;
 
 class Pizzeria
 {
@@ -30,18 +31,31 @@ class Pizzeria
         });
         $promise->wait();*/
 
-        $res = $this->client->request('GET', 'http://pizzapi.herokuapp.com/pizzas',[]);
-        echo $res->getBody();
+        try{
+            $res = $this->client->request('GET', 'http://pizzapi.herokuapp.com/pizzas',['timeout' => 30]);
+            $corpsReponse = $res->getBody();
+            echo $corpsReponse;
+
+        } catch (\Exception $e) {
+            echo "Trop de pizzas à afficher! ";
+        }
     }
 
     public function commanderPizza(){
 
-        $res = $this->client->request('POST', 'http://pizzapi.herokuapp.com/orders',
-            [
-                'json' => ['id' => 1]
-            ]
-        );
+        try {
+            $res = $this->client->request('POST', 'http://pizzapi.herokuapp.com/orders',
+                [
+                    'json' => ['id' => 1],
+                    'timeout' => 20
+                ]
+            );
 
-        echo $res->getBody();die;
+            echo $res->getBody();
+            die;
+        }catch(\Exception $e){
+            echo "Beaucoup de commande en ce moment !";
+        }
     }
+
 }
