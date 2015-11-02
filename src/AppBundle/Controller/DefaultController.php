@@ -17,15 +17,15 @@ class DefaultController extends Controller
     {
         $redis = $this->get('snc_redis.default');
         $pizzeria = new Pizzeria($this->container);
+
         $ensemble_pizzas = $pizzeria->recupererPizzasREDIS();
+        $json_ensemble_pizzas = json_decode($ensemble_pizzas);
+        //echo $json_ensemble_pizzas;
+        //$redis->get('ensemble_pizzas');
 
-        //print_r($ensemble_pizzas);
+        foreach($json_ensemble_pizzas as $pizza){
 
-        $redis->get('ensemble_pizzas');
-
-        foreach($ensemble_pizzas as $pizza){
-            //print_r($pizza);
-            //echo "\n Pizza ".$pizza->name;
+            echo "Pizza ".$pizza->name." - ".$pizza->price."<br/> ";
         }
 
         if($request->isMethod("post")) {

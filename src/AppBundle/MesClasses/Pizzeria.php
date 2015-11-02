@@ -43,6 +43,7 @@ class Pizzeria
     public function recupererPizzasREDIS(){
         $redis = $this->container->get('snc_redis.default');
         $ensemble_pizzas = $redis->get('ensemble_pizzas');
+        return $ensemble_pizzas;
     }
 
     public function commanderPizza(){
