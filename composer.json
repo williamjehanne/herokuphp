@@ -18,7 +18,9 @@
         "sensio/framework-extra-bundle": "^3.0.2",
         "incenteev/composer-parameter-handler": "~2.0",
         "guzzlehttp/guzzle": "^6.1",
-        "symfony/console": "^2.7"
+        "symfony/console": "^2.7",
+        "snc/redis-bundle": "^1.1",
+        "predis/predis": "^1.0"
     },
     "require-dev": {
         "sensio/generator-bundle": "~2.3"
