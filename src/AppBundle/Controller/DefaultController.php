@@ -15,8 +15,25 @@ class DefaultController extends Controller
      */
     public function indexAction(Request $request)
     {
+        $redis = $this->get('snc_redis.default');
         $pizzeria = new Pizzeria();
-        $pizzeria->recupererPizzas();
+        $ensemble_pizzas = $pizzeria->recupererPizzas();
+
+        //print_r($ensemble_pizzas);
+
+        $redis->set('ensemble_pizzas',$ensemble_pizzas);
+
+        foreach($ensemble_pizzas as $pizza){
+            //print_r($pizza);
+            //echo "\n Pizza ".$pizza->name;
+
+        }
+
+
+        //$redis->set('foo','bar');
+        //$top20 = $redis->zrevrange('leaderboard', 0, 20,'WITHSCORES');
+        //$canSet = $redis->set('exclusive:onehour', 1, 'NX', 'EX', 3600);
+
 
         if($request->isMethod("post")) {
             $pizzeria->commanderPizza();

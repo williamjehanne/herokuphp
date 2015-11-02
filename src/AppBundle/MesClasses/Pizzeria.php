@@ -10,7 +10,9 @@
 namespace AppBundle\MesClasses;
 
 use GuzzleHttp;
-use Symfony\Component\Config\Definition\Exception\Exception;
+use Snc\RedisBundle\Doctrine\Cache\RedisCache;
+use Predis\Client;
+
 
 class Pizzeria
 {
@@ -25,16 +27,11 @@ class Pizzeria
     }
 
     public function recupererPizzas(){
-        /*$request = new \GuzzleHttp\Psr7\Request('GET', 'http://pizzapi.herokuapp.com/pizzas');
-        $promise = $this->client->sendAsync($request)->then(function ($response) {
-            echo 'Pizzas :  ' . $response->getBody();
-        });
-        $promise->wait();*/
 
         try{
-            $res = $this->client->request('GET', 'http://pizzapi.herokuapp.com/pizzas',['timeout' => 30]);
+            $res = $this->client->request('GET', 'http://pizzapi.herokuapp.com/pizzas',['timeout' => 50]);
             $corpsReponse = $res->getBody();
-            echo $corpsReponse;
+            return $corpsReponse;
 
         } catch (\Exception $e) {
             echo "Trop de pizzas à afficher! ";
@@ -52,7 +49,6 @@ class Pizzeria
             );
 
             echo $res->getBody();
-            die;
         }catch(\Exception $e){
             echo "Beaucoup de commande en ce moment !";
         }
