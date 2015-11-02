@@ -16,7 +16,7 @@ class DefaultController extends Controller
     public function indexAction(Request $request)
     {
         $redis = $this->get('snc_redis.default');
-        $pizzeria = new Pizzeria();
+        $pizzeria = new Pizzeria($this->container);
         $ensemble_pizzas = $pizzeria->recupererPizzasREDIS();
 
         //print_r($ensemble_pizzas);

@@ -12,18 +12,20 @@ namespace AppBundle\MesClasses;
 use GuzzleHttp;
 use Snc\RedisBundle\Doctrine\Cache\RedisCache;
 use Predis\Client;
+use Symfony\Component\DependencyInjection\ContainerInterface;
 
 
 class Pizzeria
 {
     private $client;
-
+    private $container;
     /**
      * Pizzeria constructor.
      */
-    public function __construct()
+    public function __construct(ContainerInterface $container)
     {
-        $this->client = new GuzzleHttp\Client();
+        $this->client       = new GuzzleHttp\Client();
+        $this->container    = $container;
     }
 
     public function recupererPizzas(){
@@ -39,7 +41,7 @@ class Pizzeria
     }
 
     public function recupererPizzasREDIS(){
-        $redis = $this->get('snc_redis.default');
+        $redis = $this->container->get('snc_redis.default');
         $ensemble_pizzas = $redis->get('ensemble_pizzas');
     }
 

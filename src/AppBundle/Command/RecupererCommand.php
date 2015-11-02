@@ -33,7 +33,7 @@ class RecupererCommand extends ContainerAwareCommand
         $this->redis = $this->getContainer()->get('snc_redis.default');
 
         $output->writeln("Recuperer les pizzas !");
-        $this->pizzeria = new Pizzeria();
+        $this->pizzeria = new Pizzeria($this->getContainer());
         $ensemble_pizzas = $this->pizzeria->recupererPizzas();
         $this->redis->set('ensemble_pizzas',$ensemble_pizzas);
     }
