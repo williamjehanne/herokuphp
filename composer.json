@@ -20,8 +20,15 @@
         "guzzlehttp/guzzle": "^6.1",
         "symfony/console": "^2.7",
         "snc/redis-bundle": "^1.1",
-        "predis/predis": "^1.0"
+        "predis/predis": "^1.0",
+        "ejsmont-artur/php-circuit-breaker": "dev-master"
     },
+    "repositories": [
+        {
+            "type": "vcs",
+            "url":"https://github.com/bicatu/php-circuit-breaker"
+        }
+    ],
     "require-dev": {
         "sensio/generator-bundle": "~2.3"
     },

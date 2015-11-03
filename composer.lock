@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "dfa723dc3998a0507cd4033d3d5c6403",
-    "content-hash": "097c349a6deedd3babca789907472c95",
+    "hash": "75dcf6aeae493d9a8e0dbabee2e8dfb7",
+    "content-hash": "517c241fe2ba94911c68be6a269ea810",
     "packages": [
         {
             "name": "doctrine/annotations",
@@ -768,6 +768,51 @@
                 "orm"
             ],
             "time": "2015-08-31 12:59:39"
+        },
+        {
+            "name": "ejsmont-artur/php-circuit-breaker",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/bicatu/php-circuit-breaker.git",
+                "reference": "e23a51efbf85fca9af6dd97b3f43e59f467c2fc9"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/bicatu/php-circuit-breaker/zipball/e23a51efbf85fca9af6dd97b3f43e59f467c2fc9",
+                "reference": "e23a51efbf85fca9af6dd97b3f43e59f467c2fc9",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-0": {
+                    "Ejsmont": "src"
+                }
+            },
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Artur Ejsmont",
+                    "homepage": "http://artur.ejsmont.org/blog/",
+                    "role": "Developer"
+                }
+            ],
+            "description": "PHP Circuit Breaker component",
+            "homepage": "https://github.com/ejsmont-artur/php-circuit-breaker",
+            "keywords": [
+                "circuit breaker",
+                "error handling",
+                "graceful"
+            ],
+            "support": {
+                "source": "https://github.com/bicatu/php-circuit-breaker/tree/master"
+            },
+            "time": "2015-09-23 02:13:17"
         },
         {
             "name": "guzzlehttp/guzzle",
@@ -2026,7 +2071,9 @@
     ],
     "aliases": [],
     "minimum-stability": "stable",
-    "stability-flags": [],
+    "stability-flags": {
+        "ejsmont-artur/php-circuit-breaker": 20
+    },
     "prefer-stable": false,
     "prefer-lowest": false,
     "platform": {
