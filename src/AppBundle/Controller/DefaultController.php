@@ -7,6 +7,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\Config\Definition\Exception\Exception;
 use Symfony\Component\HttpFoundation\Request;
 
+
 use AppBundle\MesClasses\Pizzeria;
 
 class DefaultController extends Controller
@@ -18,6 +19,7 @@ class DefaultController extends Controller
     {
         //$redis = $this->get('snc_redis.default');
         $redis = new \Redis();
+        $redis->connect('127.0.0.1');
 
         $breakerFactory = new \Ejsmont\CircuitBreaker\Factory();
         //$circuitBreaker = $breakerFactory->getSingleApcInstance(4, 300);
@@ -29,15 +31,17 @@ class DefaultController extends Controller
         $ensemble_pizzas = $pizzeria->recupererPizzasREDIS();
         $json_ensemble_pizzas = json_decode($ensemble_pizzas);
 
-        foreach($json_ensemble_pizzas as $pizza){
+        /*foreach($json_ensemble_pizzas as $pizza){
             echo "Pizza ".$pizza->name." - ".$pizza->price."<br/> ";
-        }
+        }*/
 
         if($request->isMethod("post")) {
             if( $circuitBreaker->isAvailable("commandePizza") ) {
                 try{
                     $pizzeria->commanderPizza();
                     $circuitBreaker->reportSuccess("commandePizza");
+                }catch (MaintenanceException $e){
+                    $circuitBreaker->reportFailure("commandePizza");
                 }catch (Exception $e){
                     $circuitBreaker->reportFailure("commandePizza");
                 }

@@ -13,6 +13,8 @@ use GuzzleHttp;
 use Snc\RedisBundle\Doctrine\Cache\RedisCache;
 use Predis\Client;
 use Symfony\Component\DependencyInjection\ContainerInterface;
+use AppBundle\Exception\MaintenanceException;
+use AppBundle\Exception\PizzaApiException;
 
 
 class Pizzeria
@@ -55,6 +57,13 @@ class Pizzeria
                     'timeout' => 20
                 ]
             );
+
+            if ($res->getStatusCode() === 503) {
+                throw new MaintenanceException;
+            }
+            if ($res->getStatusCode() === 500) {
+                throw new PizzaApiException;
+            }
 
             echo $res->getBody();
         }catch(\Exception $e){
