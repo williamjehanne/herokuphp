@@ -21,7 +21,8 @@
         "symfony/console": "^2.7",
         "snc/redis-bundle": "^1.1",
         "predis/predis": "^1.0",
-        "ejsmont-artur/php-circuit-breaker": "dev-master"
+        "ejsmont-artur/php-circuit-breaker": "dev-master",
+        "pear/http_request2": "^2.2"
     },
     "repositories": [
         {
