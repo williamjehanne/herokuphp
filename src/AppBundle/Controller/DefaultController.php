@@ -17,7 +17,7 @@ class DefaultController extends Controller
      */
     public function indexAction(Request $request)
     {
-        var_dump(getenv('REDIS_URL'));die();
+
         //$redis = $this->get('snc_redis.default');
         $redis = new Predis\Client(getenv('REDIS_URL'));
 

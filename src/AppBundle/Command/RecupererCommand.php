@@ -31,7 +31,7 @@ class RecupererCommand extends ContainerAwareCommand
 
     protected function execute(InputInterface $input, OutputInterface $output)
     {
-        $this->redis = new Predis\Client();
+        $this->redis = new Predis\Client(getenv('REDIS_URL'));
 
         $output->writeln("Recuperer les pizzas !");
         $this->pizzeria = new Pizzeria($this->getContainer());

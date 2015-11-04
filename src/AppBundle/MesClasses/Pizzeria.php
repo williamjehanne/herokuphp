@@ -44,7 +44,7 @@ class Pizzeria
     }
 
     public function recupererPizzasREDIS(){
-        $redis = new Predis\Client();
+        $redis = new Predis\Client(getenv('REDIS_URL'));
         $ensemble_pizzas = $redis->get('ensemble_pizzas');
         return $ensemble_pizzas;
     }
