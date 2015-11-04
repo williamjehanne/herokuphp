@@ -23,7 +23,7 @@ class DefaultController extends Controller
 
 
         $pizzeria = new Pizzeria($this->container);
-
+        $pizzeria->recupererPizzas();
         $ensemble_pizzas = $pizzeria->recupererPizzasREDIS();
         $json_ensemble_pizzas = json_decode($ensemble_pizzas);
 

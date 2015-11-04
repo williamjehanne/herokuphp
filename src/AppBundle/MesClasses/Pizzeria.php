@@ -36,7 +36,9 @@ class Pizzeria
         try{
             $res = $this->client->get('http://pizzapi.herokuapp.com/pizzas',['timeout' => 50]);
             $corpsReponse = $res->getBody()->getContents();
-            return $corpsReponse;
+            $redis = new Predis\Client(getenv('REDIS_URL'));
+
+            $redis->set('ensemble_pizzas',$corpsReponse);
 
         } catch (\Exception $e) {
             echo "Trop de pizzas à afficher! ";
