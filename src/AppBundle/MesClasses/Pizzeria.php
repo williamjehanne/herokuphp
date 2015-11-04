@@ -15,6 +15,7 @@ use Predis\Client;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 use AppBundle\Exception\MaintenanceException;
 use AppBundle\Exception\PizzaApiException;
+use Predis;
 
 
 class Pizzeria
@@ -43,7 +44,7 @@ class Pizzeria
     }
 
     public function recupererPizzasREDIS(){
-        $redis = $this->container->get('snc_redis.default');
+        $redis = new Predis\Client();
         $ensemble_pizzas = $redis->get('ensemble_pizzas');
         return $ensemble_pizzas;
     }
