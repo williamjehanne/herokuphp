@@ -13,6 +13,7 @@ use Symfony\Bundle\FrameworkBundle\Command\ContainerAwareCommand;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
+use Predis;
 
 class RecupererCommand extends ContainerAwareCommand
 {
@@ -30,7 +31,7 @@ class RecupererCommand extends ContainerAwareCommand
 
     protected function execute(InputInterface $input, OutputInterface $output)
     {
-        $this->redis = $this->getContainer()->get('snc_redis.default');
+        $this->redis = new Predis\Client();
 
         $output->writeln("Recuperer les pizzas !");
         $this->pizzeria = new Pizzeria($this->getContainer());
