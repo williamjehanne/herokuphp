@@ -33,8 +33,8 @@ class Pizzeria
     public function recupererPizzas(){
 
         try{
-            $res = $this->client->request('GET', 'http://pizzapi.herokuapp.com/pizzas',['timeout' => 50]);
-            $corpsReponse = $res->getBody();
+            $res = $this->client->get('http://pizzapi.herokuapp.com/pizzas',['timeout' => 50]);
+            $corpsReponse = $res->getBody()->getContents();
             return $corpsReponse;
 
         } catch (\Exception $e) {
